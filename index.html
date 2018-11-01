@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CryptoKittie</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		.body-container {
+			overflow: hidden;
+		}
+
+		.cat {
+			background-color: #a2c2eb;
+			padding: 15px;
+			text-align: center;
+			border-radius: 10px;
+		}
+
+		.grid {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.price {
+			display:  inline-block;
+			padding: 10px;
+			border-radius: 15px 10px;
+			background-color: #fff;
+		}
+		.grid-item {
+			flex: 0 0 25%;
+			max-width: 25%;
+			padding: 15px;
+		}
+		.kittie {
+			max-width: 100%;
+		}
+		
+		.btn {
+			font-size: 30px;
+			padding: 10px;
+    		border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="body-container">
+		<button class="btn" type="button">Add some kitties</button>
+		<div class="grid">
+			<template id="templ">
+				<div class="grid-item">
+					<div class="cat">
+						<div class="price">For sale = 
+							<span class="cat-price"> 100$</span></div>
+						<img class="kittie" src="https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1072111.svg">
+					</div>	
+				</div>
+			</template>
+			<template id="templ">
+				<div class="grid-item">
+					<div class="cat">
+						<div class="price">For sale = 
+							<span class="cat-price"> 100$</span></div>
+						<img class="kittie" src="https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1072111.svg">
+					</div>	
+				</div>
+			</template>
+			<template id="templ">
+				<div class="grid-item">
+					<div class="cat">
+						<div class="price">For sale = 
+							<span class="cat-price"> 100$</span></div>
+						<img class="kittie" src="https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1072111.svg">
+					</div>	
+				</div>
+			</template>
+			<template id="templ">
+				<div class="grid-item">
+					<div class="cat">
+						<div class="price">For sale = 
+							<span class="cat-price"> 100$</span></div>
+						<img class="kittie" src="https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1072111.svg">
+					</div>	
+				</div>
+			</template>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var elem = document.querySelector(".btn"),
+		 gr = document.querySelector(".grid"),
+		 temp = document.querySelector("#templ"),
+		 i = 0,
+		 arr = [
+		 {
+			color: '#ffdee5',
+			link: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1082340.svg',
+			price: '0.1111',
+		},
+		{
+			color: '#caefeb',
+			link: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1075399.svg',
+			price: '0.2222',
+		},
+		{
+			color: '#e4eaff',
+			link: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/493457.svg',
+			price: '0.333',
+		},
+		{
+			color: '#caefeb',
+			link: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1072111.svg',
+			price: '0.4444',
+
+		}];
+
+		elem.addEventListener('click', add);
+
+		function add () {
+			var clone = document.importNode(temp.content, true);
+			changeCat(clone);
+			gr.appendChild(clone);
+		}
+
+		function changeCat(clone) {
+			clone.querySelector(".cat-price").innerHTML = arr[i].price;
+			clone.querySelector(".kittie").src = arr[i].link;
+			clone.querySelector(".cat").backgroundColor = arr[i].color;
+			i++;
+			if(i == 4) {
+				i = 0;
+			}
+		}
+
+	</script>
+</body>
+</html>
